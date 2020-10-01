@@ -1,6 +1,6 @@
 """
 Short Python script to download StatCan data tables using the Web Data Service. 
-Last modified by Joseph Kuchar, Feb 11, 2020
+Last modified by Joseph Kuchar, Oct 1, 2020
 """
 
 import requests
@@ -20,7 +20,7 @@ def getFullTable(pid,path=''):
     print('cleaning pid {}'.format(pid))
     url='https://www150.statcan.gc.ca/t1/wds/rest/getFullTableDownloadCSV/{}/en'.format(pid)
     
-    R=requests.get(url, proxies=credentials.proxy)
+    R=requests.get(url)
     response=R.json()
     if response['status']!='SUCCESS':
         raise ValueError('Failed to retrieve valid response')
